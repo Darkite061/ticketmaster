@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#mensaje {
+    color: green; /* Color para éxito */
+    /* Opcional: otros estilos como tamaño de fuente, margen, etc. */
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color:#451a3e;
+}
+
+.form {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em;
+    padding: 3em;
+    width: 30%;
+    height: 40%;
+    border: 1px solid #00000059;
+    border-radius: 2em;
+    background-color: #270a33;
+}
+
+h1 {
+    color: #FFF;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+input {
+    font-family: 'Quicksand';
+    font-weight: bold;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.2em;
+    height: 3em;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    width: 8em;
+    height: 3em;
+    font-family: 'Quicksand';
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid #ffffff48;
+    color: #ffffff9d;
+    font-weight: bold;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0000002f;
+    color: #ffffffce;
+    border-color: #ffffffce;
+}
