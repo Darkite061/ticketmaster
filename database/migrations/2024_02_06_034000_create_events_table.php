@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('artist_id')->index();
             $table->unsignedBigInteger('places_id')->index();
             $table->decimal('price_tickets', 8, 2);
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('discount', 8, 2);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->string('status');
             $table->timestamps();
         });
     }

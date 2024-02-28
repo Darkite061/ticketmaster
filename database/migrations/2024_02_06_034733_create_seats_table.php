@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id')->index();
             $table->string('row');
             $table->integer('number');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('event_id')->references('id')->on('events');

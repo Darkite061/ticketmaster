@@ -16,7 +16,7 @@ class CartegoriesController extends Controller
     public function index()
     {
         //
-        $categorias = DB :: table ('categories')->where('estado','activo')->get();
+        $categorias = DB :: table ('categories')->where('status','active')->get();
         return view('/admin/categories/list')->with ('categorias',$categorias);
         return "Mostrar la lista de categorias";
     }
