@@ -26,7 +26,7 @@
   </div>
   <div class="col-md-12">
     <label for="validationCustom03" class="form-label">IMG:</label>
-    <input type="file" accept="image/*" class="form-control" id="validationCustom03" required>
+    <input type="file" accept="image/*" class="form-control" id="validationCustom03" >
     <div class="valid-feedback">
       Looks good!
     </div>
