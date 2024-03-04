@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('genre');
             $table->string('status');
+            $table->string('image')->nullable();
             $table->timestamps();
         });    
     }

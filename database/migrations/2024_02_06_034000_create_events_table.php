@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->dateTime('date');
             $table->text('description');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('category_id')->index();
             $table->unsignedBigInteger('artist_id')->index();
             $table->unsignedBigInteger('places_id')->index();

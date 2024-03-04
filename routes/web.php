@@ -47,11 +47,11 @@ Route::get('/', function () {
 
 Route::get('/categories',[categoriesController::class ,'index']);
 Route::get('/categories/create',[categoriesController::class , 'create']);
-Route::post('/categories',[categoriesController::class,'guardar']);
-Route::get('/categories/editar/{id}',[categoriesController::class,'editar']);
-Route::put('/categories/{id}',[categoriesController::class,'actualizar']);
-Route::get('/categories/mostrar/{id}',[categoriesController::class,'mostrar']);
-Route::delete('/categories/{id}',[categoriesController::class,'borrar']);
+Route::post('/categories',[categoriesController::class,'store']);
+Route::get('/categories/editar/{id}',[categoriesController::class,'edit']);
+Route::put('/categories/{id}',[categoriesController::class,'update']);
+Route::get('/categories/mostrar/{id}',[categoriesController::class,'show']);
+Route::delete('/categories/{id}',[categoriesController::class,'destroy']);
 
 // Route::get('/artist',[artistController::class ,'index']);
 // Route::get('/artist/create',[artistController::class , 'crear']);
