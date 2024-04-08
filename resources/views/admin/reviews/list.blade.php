@@ -1,38 +1,31 @@
-@extends('/admin/plantilla/layout')
+@extends('admin/plantilla/layout')
 
-@section('titulo','LISTADO DE REVIEW')
+@section('titulo','Lista_de_reviews')
 
 @section('contenido')
-<div class="col-12">
-  <a class="btn btn-primary" href="/admin/reviews/create">create category</a>
-</div>
+<h1>LISTA</h1>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">description</th>
-      <th scope="col">img</th>
+      <th scope="col">#</th>
+      <th scope="col">event_id</th>
+      <th scope="col">rating</th>
+      <th scope="col">comment</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($reviews as $review)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$review->id}}</th>
+      <td>{{$review->event_id}}</td>
+      <td>{{$review->rating}}</td>
+      <td>{{$review->comment}}</td>
+      <td><a href="/reviews/editar/{{$review->id}}">editar</a></td>
+      <td><a href="/reviews/mostrar/{{$review->id}}">borrar</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection

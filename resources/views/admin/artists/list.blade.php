@@ -1,35 +1,36 @@
-@extends('/admin/plantilla/layout')
+@extends('admin/plantilla/layout')
 
-@section('titulo','LISTADO DE ARTIST')
+@section('titulo','Lista_de_artistas')
 
 @section('contenido')
-<div class="col-12">
-  <a class="btn btn-primary" href="/admin/artists/create">create artists</a>
+<h1>LISTA</h1>
+<div>
+  <a class="btn btn-primary" href="/artist/create">crear artistas</a>
 </div>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">genero</th>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Genero</th>
+      <th scope="col">IMG</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($artists as $artista)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
+      <th scope="row">{{$artista->id}}</th>
+      <td>{{$artista->name}}</td>
+      <td>{{$artista->genre}}</td>
+      <td>
+        <img src="{{ $artista->image }}" alt="{{ $artista->image }}" width="150">
+      </td>
+      <td><a href="/artist/editar/{{$artista->id}}">editar</a></td>
+      <td><a href="/artist/mostrar/{{$artista->id}}">borrar</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection

@@ -13,18 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
+        Schema::create('purchases_detaile', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('purchase_id')->index();
             $table->unsignedBigInteger('event_id')->index();
-            $table->string('section');
-            $table->string('row');
-            $table->integer('number');
-            $table->string('status');
+            $table->integer('quantity');
+            $table->decimal('price', 8, 2);
+            $table->decimal('sub_total', 8, 2);
             $table->timestamps();
 
+            $table->foreign('purchase_id')->references('id')->on('purchases');
             $table->foreign('event_id')->references('id')->on('events');
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seats');
+        Schema::dropIfExists('purchases_detaile');
     }
 };

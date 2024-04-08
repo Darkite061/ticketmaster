@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->integer('capacity');
+            $table->string('image')->nullable();
             $table->string('status');
             $table->timestamps();
         });  

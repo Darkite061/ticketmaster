@@ -1,23 +1,32 @@
 @extends('/admin/plantilla/layout')
 
-@section('titulo','CREAR SEATS')
+@section('titulo','Lista_de_tickets')
 
 @section('contenido')
-<h1>CREAR</h1>
-<form class="row g-3 needs-validation" method="POST" action="/seats" novalidate enctype="multipart/form-data">
-  @csrf
-  @method('POST')
+<h1>EDITAR</h1>
+<form class="row g-3 needs-validation" method="POST" action="/tickets/{{$tickets->id}}" novalidate enctype="multipart/form-data">
+  @csrf  
+  @method('PUT')
   <div class="col-md-12">
-    <label for="validationCustom01" class="form-label">Evento::</label>
+    <label for="event_id">Event id:</label>
     <select name="event_id" id="event_id">
         @foreach ($events as $event)
-            <option value="{{ $event->id }}">{{ $event->name }}</option>
+            <option value="{{ $event->id }}" @if($tickets && $tickets->event_id == $event->id) selected @endif>{{ $event->name }}</option>
         @endforeach
     </select>
-    </div>
-    
+  </div>
+  <div class="col-md-12">
+    <label for="user_id">User id:</label>
+    <select name="user_id" id="user_id">
+        @foreach ($users as $user)
+            <option value="{{ $user->id }}" @if($tickets && $tickets->user_id == $user->id) selected @endif>{{ $user->name }}</option>
+        @endforeach
+    </select>
+  </div>
+
     <!-- Agregar campos ocultos para almacenar los nombres seleccionados -->
   <input type="hidden" name="event_name" id="event_name">
+  <input type="hidden" name="user_name" id="user_name">
   
   <!-- Agregar script JavaScript para actualizar campos ocultos al seleccionar una opción -->
   <script>
@@ -25,40 +34,26 @@
           var selectedOption = this.options[this.selectedIndex];
           document.getElementById('event_name').value = selectedOption.text;
       });
+  
+      document.getElementById('user_id').addEventListener('change', function () {
+          var selectedOption = this.options[this.selectedIndex];
+          document.getElementById('user_name').value = selectedOption.text;
+      });
   </script>
+  
   <div class="col-md-12">
-    <label for="validationCustom02" class="form-label">Section:</label>
-    <input type="text" class="form-control" id="validationCustom02" value="section" name="section" required>
+    <label for="validationCustom02" class="form-label">Price</label>
+    <input type="text" class="form-control" id="validationCustom02" value="{{$tickets->price}}" name="price" required>
     <div class="valid-feedback">
       Looks good!
     </div>
     <div class="invalid-feedback">
-      Please choose a section.
+      Please choose a price.
     </div>
   </div>
-    <div class="col-md-12">
-      <label for="validationCustom02" class="form-label">Row:</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Fila" name="row" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please choose a fila.
-      </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
-    <div class="col-md-12">
-      <label for="validationCustom02" class="form-label">Number:</label>
-      <input type="text" class="form-control" id="validationCustom02" value="number" name="number" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please choose a genero.
-      </div>
-    </div>
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
-      </div>
   </form>
 
 <script>

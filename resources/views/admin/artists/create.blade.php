@@ -3,30 +3,43 @@
 @section('titulo','CREAR ARTIST')
 
 @section('contenido')
-<form class="row g-3 needs-validation" novalidate>
-  <div class="col-md-12">
-    <label for="validationCustom01" class="form-label">Name:</label>
-    <input type="text" class="form-control" id="validationCustom01" required>
-    <div class="valid-feedback">
-      Looks good!
+<h1>CREAR</h1>
+<form class="row g-3 needs-validation" method="POST" action="/artist" novalidate enctype="multipart/form-data">
+  @csrf
+  @method('POST')
+    <div class="col-md-12">
+      <label for="validationCustom01" class="form-label">Artista</label>
+      <input type="text" class="form-control" id="validationCustom01" name="name" value="Artista" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please choose a name.
+      </div>
     </div>
-    <div class="invalid-feedback">
-      Please choose a name.
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">genero:</label>
+      <input type="text" class="form-control" id="validationCustom02" value="Genero" name="genre" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please choose a genero.
+      </div>
     </div>
-  </div>
-  <div class="col-md-12">
-    <label for="validationCustom02" class="form-label">genero:</label>
-    <input type="text" class="form-control" id="validationCustom02" required>
-    <div class="valid-feedback">
-      Looks good!
+    <div class="col-md-12">
+      <label for="validationCustom03" class="form-label">IMG</label>
+      <input type="file" accept="image/*" class="form-control" id="validationCustom03" name="image" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide a img.
+      </div>
     </div>
-    <div class="invalid-feedback">
-      Please choose a genero.
-    </div>
-  </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </div>
   </form>
 
 <script>

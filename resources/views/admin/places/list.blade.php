@@ -1,38 +1,38 @@
-@extends('/admin/plantilla/layout')
+@extends('admin/plantilla/layout')
 
-@section('titulo','LISTADO DE PLACES')
+@section('titulo','Lista_de_lugares')
 
 @section('contenido')
-<div class="col-12">
-  <a class="btn btn-primary" href="/admin/places/create">create category</a>
+<h1>LISTA</h1>
+<div>
+  <a class="btn btn-primary" href="/places/create">crear places</a>
 </div>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">description</th>
-      <th scope="col">img</th>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Capacidad</th>
+      <th scope="col">IMG</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($places as $place)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$place->id}}</th>
+      <td>{{$place->name}}</td>
+      <td>{{$place->address}}</td>
+      <td>{{$place->capacity}}</td>
+      <td>
+        <img src="{{ $place->image }}" alt="{{ $place->image }}" width="150">
+      </td>
+      <td><a href="/places/editar/{{$place->id}}">editar</a></td>
+      <td><a href="/places/mostrar/{{$place->id}}">borrar</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection

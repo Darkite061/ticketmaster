@@ -1,38 +1,36 @@
-@extends('/admin/plantilla/layout')
+@extends('admin/plantilla/layout')
 
-@section('titulo','LISTADO DE SEATS')
+@section('titulo','Lista_de_seats')
 
 @section('contenido')
-<div class="col-12">
-  <a class="btn btn-primary" href="/admin/seats/create">create category</a>
+<h1>LISTA</h1>
+<div>
+  <a class="btn btn-primary" href="/seats/create">crear seats</a>
 </div>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
-      <th scope="col">name</th>
-      <th scope="col">description</th>
-      <th scope="col">img</th>
+      <th scope="col">#</th>
+      <th scope="col">event_id</th>
+      <th scope="col">section</th>
+      <th scope="col">row</th>
+      <th scope="col">number</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($seats as $seat)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$seat->id}}</th>
+      <td>{{$seat->event_id}}</td>
+      <td>{{$seat->section}}</td>
+      <td>{{$seat->row}}</td>
+      <td>{{$seat->number}}</td>
+      <td><a href="/seats/editar/{{$seat->id}}">editar</a></td>
+      <td><a href="/seats/mostrar/{{$seat->id}}">borrar</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 @endsection

@@ -1,71 +1,55 @@
 @extends('/admin/plantilla/layout')
 
-@section('titulo','CREAR PLACES')
+@section('titulo','CREAR Lugar')
 
 @section('contenido')
-<form class="row g-3 needs-validation" novalidate>
-    <div class="col-md-4">
-      <label for="validationCustom01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+<h1>CREAR</h1>
+<form class="row g-3 needs-validation" method="POST" action="/places" novalidate enctype="multipart/form-data">
+  @csrf
+  @method('POST')
+    <div class="col-md-12">
+      <label for="validationCustom01" class="form-label">Lugar</label>
+      <input type="text" class="form-control" id="validationCustom01" name="name" value="Lugar" required>
       <div class="valid-feedback">
         Looks good!
       </div>
+      <div class="invalid-feedback">
+        Please choose a name.
+      </div>
     </div>
-    <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">Dirreccion</label>
+      <input type="text" class="form-control" id="validationCustom02" value="Direccion" name="address" required>
       <div class="valid-feedback">
         Looks good!
       </div>
-    </div>
-    <div class="col-md-4">
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="validationCustom03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
-        Please provide a valid city.
+        Please choose a genero.
       </div>
     </div>
-    <div class="col-md-3">
-      <label for="validationCustom04" class="form-label">State</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">Capacidad</label>
+      <input type="text" class="form-control" id="validationCustom02" value="Capacidad" name="capacity" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
       <div class="invalid-feedback">
-        Please select a valid state.
+        Please choose a genero.
       </div>
     </div>
-    <div class="col-md-3">
-      <label for="validationCustom05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
+    <div class="col-md-12">
+      <label for="validationCustom03" class="form-label">IMG</label>
+      <input type="file" accept="image/*" class="form-control" id="validationCustom03" name="image" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
       <div class="invalid-feedback">
-        Please provide a valid zip.
+        Please provide a img.
       </div>
     </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
       </div>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
   </form>
 
 <script>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\categoriesController;
 use Illuminate\Support\Facades\DB;
 
 class categoriesController extends Controller
@@ -41,7 +40,7 @@ class categoriesController extends Controller
             $path=$request->image->storeAs($ruta,$nombre,'public');
             DB::table('categories')->where('id',$id)
             ->update([
-                'image' =>$path,
+                'image' => '/storage/'.$path,
                 'updated_at' => now(),
             ]);
 
@@ -90,7 +89,7 @@ class categoriesController extends Controller
             $path=$request->image->storeAs($ruta,$nombre,'public');
             DB::table('categories')->where('id',$id)
             ->update([
-                'image' =>$path,
+                'image' => '/storage/'.$path,
                 'updated_at' => now(),
             ]);
         }

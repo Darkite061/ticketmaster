@@ -11,18 +11,16 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Genero</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">img</th>
-      <th scope="col">editar</th>
-      <th scope="col">borrar</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">IMG</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
       
     </tr>
   </thead>
   <tbody>
-
-@foreach($categorias as $categoria)
-
+    @foreach($categorias as $categoria)
     <tr>
       <th scope="row">{{$categoria->id}}</th>
       <td>{{$categoria->name}}</td>
@@ -33,9 +31,6 @@
       <td><a href="/categories/editar/{{$categoria->id}}">editar</a></td>
       <td><a href="/categories/mostrar/{{$categoria->id}}">borrar</a></td>
     </tr>
-  
-    
-    </tr> 
     @endforeach
   </tbody>
 </table>

@@ -11,17 +11,24 @@
 </head>
 <body>
     <main class="container">
-        <form class="form">
-            <h1>Login</h1>
-            <div class="inputs">
-                <input required type="text" id="user" placeholder="usuario">
-                <input required type="password" id="password" placeholder="contraseña">
-            </div>
-            <footer>
-                <button id="button">Log in</button>
-            </footer>
+        <form method="POST" action="{{ route('inicia-sesion') }}" class="form">
+            @csrf
+                <div class="inputs">
+                    <input type="text" id="email" name="email" placeholder="usuario" required autofocus>
+                </div>
+                <div class="inputs">
+                    <input type="password" id="password" name="password" placeholder="contraseña" required>
+                </div>
+                <div>
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Recordarme</label>
+                </div>
+                <footer>
+                    <button type="submit" id="button">Iniciar sesión</button>
+                </footer>
         </form>
+        
     </main>
-    <script src="\ccs\login\script.js"></script>
+    {{-- <script src="\ccs\login\script.js"></script> --}}
 </body>
 </html>
