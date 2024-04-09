@@ -9,9 +9,6 @@
     <title>Ticketmaster -> @yield('titulo')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-
-    
-
     <!-- Bootstrap core CSS -->
 <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -63,63 +60,53 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/artist">
-              <span data-feather="layers"></span>
-              Artists
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/categories">
-              <span data-feather="layers"></span>
-              Categories
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/events">
               <span data-feather="layers"></span>
-              Events
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/places">
-              <span data-feather="layers"></span>
-              Places
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/promotions">
-              <span data-feather="layers"></span>
-              Promotions
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/purchases">
-              <span data-feather="layers"></span>
-              Purchases
+              Proyectos (Events)
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/reviews">
               <span data-feather="layers"></span>
-              Reviews
+              Evaluaciones (Reviews)
             </a>
           </li>
+            <li class="nav-item dropdown">
+              <div class="dropdown show">
+              <a class="nav-link dropdown-toggle" href="#" id="maintenanceDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span data-feather="layers"></span>
+                Mantenimiento
+              </a>
+              <div class="dropdown-menu" aria-labelledby="maintenanceDropdown">
+                <a class="dropdown-item" href="/artist">Artista</a>
+                <a class="dropdown-item" href="/categories">Categorías</a>
+                <a class="dropdown-item" href="/places">Lugares</a>
+                <a class="dropdown-item" href="/promotions">Promociones</a>
+                <a class="dropdown-item" href="/purchases">Compras</a>
+                <a class="dropdown-item" href="/seats">Asientos</a>
+                <a class="dropdown-item" href="/tickets">Entradas</a>
+                <a class="dropdown-item" href="/users">Usuarios</a>
+              </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="dropdown show">
+              <a class="nav-link dropdown-toggle" href="#" id="reportDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span data-feather="layers"></span>
+                Reportes
+              </a>
+              <div class="dropdown-menu" aria-labelledby="reportDropdown">
+                <a class="dropdown-item" href="#">Tipo de reporte 1</a>
+                <a class="dropdown-item" href="#">Tipo de reporte 2</a>
+                <a class="dropdown-item" href="#">Tipo de reporte 3</a>
+                <!-- Agrega aquí más tipos de reportes según tus necesidades -->
+              </div>
+              </div>
+            </li>       
           <li class="nav-item">
-            <a class="nav-link" href="/seats">
+            <a class="nav-link" href="#">
               <span data-feather="layers"></span>
-              Seats
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/tickets">
-              <span data-feather="layers"></span>
-              Tickets
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/users">
-              <span data-feather="layers"></span>
-              Users
+              Ayuda (acerca de)
             </a>
           </li>
         </ul>
@@ -144,8 +131,10 @@
 </div>
 
 
-    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="\ccs\dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="\ccs\dashboard.js"></script>
+  <!-- Nav bar scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

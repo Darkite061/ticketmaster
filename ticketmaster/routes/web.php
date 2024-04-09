@@ -26,12 +26,12 @@ use App\Http\Controllers\loginController;
 */
 
 Route::get('/', function () {
-    return view('/index');
+    return view('/welcome');
 });
 
 //Routes
 
-Route::view('/index','/admin/plantilla/layout');
+Route::view('/index','/admin/plantilla/layout')->name('index');
 
 Route::get('/categories',[categoriesController::class ,'index'])->middleware('auth');
 Route::get('/categories/create',[categoriesController::class , 'create'])->middleware('auth');

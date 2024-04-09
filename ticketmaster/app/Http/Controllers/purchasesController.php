@@ -9,7 +9,7 @@ class purchasesController extends Controller
 {
     public function index()
     {
-        $purchases = DB :: table ('purchases')->where('status','ACTIVE')->get();
+        $purchases = DB :: table ('purchases')->get();
         return view('/admin/purchases/list')->with ('purchases',$purchases);
     }
 
@@ -56,7 +56,7 @@ class purchasesController extends Controller
             'total_amount' =>$request ->total_amount,
             'updated_at' => now(),
         ]);
-        $purchases = DB :: table ('purchases')->where('status','ACTIVE')->get();
+        $purchases = DB :: table ('purchases')->get();
         return view('/admin/purchases/list')->with ('purchases',$purchases)->with ('mensaje','registro realizado');
     }
 
@@ -67,7 +67,7 @@ class purchasesController extends Controller
             
             'status' =>"INACTIVE",
         ]);
-        $promotions = DB :: table ('purchases')->where('status','ACTIVE')->get();
+        $promotions = DB :: table ('purchases')->get();
         return view('/admin/purchases/list')->with ('purchases',$purchases);
     }
 }
