@@ -20,6 +20,10 @@ use App\Http\Controllers\EventController;
 // Route::view('/catalogo','/catalogo.producto');
 // Route::view('/detalle','/catalogo.detalle');
 
+Route::get('/', function () {
+    return view('/welcome');
+});
+
 Route::get('/producto',[ClienteProductoController::class,'catalogo']);
 Route::get('/detalle/{id}',[ClienteProductoController::class,'detalle']);
 Route::get('/', [EventController::class, 'eventList'])->name('event.list');
