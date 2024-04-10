@@ -31,7 +31,8 @@ Route::get('/', function () {
 
 //Routes
 
-Route::view('/index','/admin/plantilla/layout')->name('index');
+Route::view('/index','/admin/plantilla/index')->name('index');
+Route::view('/help','/admin/help/help')->name('help');
 
 Route::get('/categories',[categoriesController::class ,'index'])->middleware('auth');
 Route::get('/categories/create',[categoriesController::class , 'create'])->middleware('auth');

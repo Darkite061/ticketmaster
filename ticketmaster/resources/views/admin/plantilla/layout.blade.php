@@ -43,7 +43,7 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <a class="nav-link px-3" href="{{route('logout')}}">Sign out</a>
     </div>
   </div>
 </header>
@@ -59,16 +59,21 @@
               Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/events">
+          <li class="nav-item dropdown">
+            <div class="dropdown show">
+            <a class="nav-link dropdown-toggle" href="#" id="reportDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span data-feather="layers"></span>
-              Proyectos (Events)
+              Proyectos
             </a>
-          </li>
+            <div class="dropdown-menu" aria-labelledby="reportDropdown">
+              <a class="dropdown-item" href="/events">Events</a>
+            </div>
+            </div>
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="/reviews">
               <span data-feather="layers"></span>
-              Evaluaciones (Reviews)
+              Evaluaciones
             </a>
           </li>
             <li class="nav-item dropdown">
@@ -99,16 +104,20 @@
                 <a class="dropdown-item" href="#">Tipo de reporte 1</a>
                 <a class="dropdown-item" href="#">Tipo de reporte 2</a>
                 <a class="dropdown-item" href="#">Tipo de reporte 3</a>
-                <!-- Agrega aquí más tipos de reportes según tus necesidades -->
               </div>
               </div>
             </li>       
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Ayuda (acerca de)
-            </a>
-          </li>
+            <li class="nav-item dropdown">
+              <div class="dropdown show">
+              <a class="nav-link dropdown-toggle" href="#" id="reportDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span data-feather="layers"></span>
+                Ayuda
+              </a>
+              <div class="dropdown-menu" aria-labelledby="reportDropdown">
+                <a class="dropdown-item" href="/help">Acerca de</a>
+              </div>
+              </div>
+            </li>   
         </ul>
       </div>
     </nav>
@@ -118,7 +127,7 @@
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
-            <a href="{{route('logout')}}"><button type="button" class="btn btn-outline-primary me-2">Salir</button></a>
+            
           </div>
         </div>
       </div>
