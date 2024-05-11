@@ -5,7 +5,7 @@
 @section('contenido')
 <h1>LISTA</h1>
 <div>
-    <a class="btn btn-primary" href="/categories/create">crear categoria</a>
+    <a class="btn btn-primary" href="/categorias/crear">crear categoria</a>
 </div>
 <table class="table">
   <thead>
@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($categorias as $categoria)
+    @foreach($categories as $categoria)
     <tr>
       <th scope="row">{{$categoria->id}}</th>
       <td>{{$categoria->name}}</td>
@@ -28,8 +28,8 @@
       <td>
         <img src="{{ $categoria->image }}" alt="{{ $categoria->image }}" width="150">
       </td>
-      <td><a href="/categories/editar/{{$categoria->id}}">editar</a></td>
-      <td><a href="/categories/mostrar/{{$categoria->id}}">borrar</a></td>
+      <td><a href="/categorias/editar/{{$categoria->id}}">editar</a></td>
+      <td><a href="/categorias/mostrar/{{$categoria->id}}">borrar</a></td>
     </tr>
     @endforeach
   </tbody>

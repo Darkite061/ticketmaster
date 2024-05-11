@@ -4,7 +4,7 @@
 
 @section('contenido')
 <h1>MOSTRAR</h1>
-<form class="row g-3 needs-validation" method="POST" action="/categories/{{$categoria->id}}" novalidate>
+<form class="row g-3 needs-validation" method="POST" action="/categorias/{{$categoria->id}}" novalidate>
   @csrf  
   @method('DELETE')
   <div class="col-md-12">

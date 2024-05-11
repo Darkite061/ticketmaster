@@ -4,7 +4,7 @@
 
 @section('contenido')
 <h1>CREAR</h1>
-<form class="row g-3 needs-validation" method="POST" action="/categories" novalidate enctype="multipart/form-data">
+<form class="row g-3 needs-validation" method="POST" action="/categorias" novalidate enctype="multipart/form-data">
   @csrf
   @method('POST')
   <div class="col-md-12">

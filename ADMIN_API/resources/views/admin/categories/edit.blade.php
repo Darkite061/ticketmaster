@@ -4,7 +4,7 @@
 
 @section('contenido')
 <h1>EDITAR</h1>
-<form class="row g-3 needs-validation" method="POST" action="/categories/{{$categoria->id}}" novalidate enctype="multipart/form-data">
+<form class="row g-3 needs-validation" method="POST" action="/categorias/{{$categoria->id}}" novalidate enctype="multipart/form-data">
   @csrf  
   @method('PUT')
   <div class="col-md-12">

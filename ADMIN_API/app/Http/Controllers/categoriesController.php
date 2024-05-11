@@ -5,21 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class categoriesController extends Controller
 {
 
-    private $url_categorias = 'http://127.0.0.1:8000/api/categories';
+    private $url_categorias = 'http://127.0.0.1:8010/api/categories/';
 
     public function index()
     {
-        $response = Http::get($this->url_categorias);
-        // $json=$response->json();
-
-        // dd($json['Categories']);
+        $response = Http::withToken(Session::get('token'))->get($this->url_categorias);
         $json=json_decode($response->body());
+        // dd($json);
 
-        return view('/admin/categories/list')->with ('categorias',$json->Categories);
+        return view('/admin/categories/list')->with('categories', $json->categories);
     }
     
     public function create()
@@ -29,8 +28,14 @@ class categoriesController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
-        $id=DB::table('categories')->insertGetId([
+       // dd($request->name);
+       
+        $response = Http::withToken(Session::get('token'))
+        ->attach(
+            'image', //nombre del campo enviado a la api
+            $request->file('image')->getContent(),  //contenido de la imagen
+            $request->file('image')->getClientOriginalName() //nombre del archivo
+        )->post($this->url_categorias,[
             'name' => $request ->name,
             'description' =>$request ->description,
             'image' =>$request ->image,
@@ -38,92 +43,70 @@ class categoriesController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        if($request->hasFile('image')){
-            $ruta='imagenes/categories';
-            $extension=$request->image->extension();
-            $nombre='categoria_'.$id.'.'.$extension;
-            $path=$request->image->storeAs($ruta,$nombre,'public');
-            DB::table('categories')->where('id',$id)
-            ->update([
-                'image' => '/storage/'.$path,
-                'updated_at' => now(),
-            ]);
 
-        // if($request->hasFile('picture')){
-        //     $ruta='imagenes/categories';
-        //     $extension=$request->image->extension();
-        //     $nombre='categoria_'.$id.'.'.$extension;
-        //     $path=$request->image->storeAs($ruta,$nombre,'public');
-        //     $id=DB::table('images')->insert([
-        //         'name' => $path,
-        //         'description' =>'informacion de prueba',
-        //         'event_id' =>$id,
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        }
-        $categorias = DB :: table ('categories')->where('status','ACTIVE')->get();
-        return view('/admin/categories/list')->with ('categorias',$categorias);
+        $json=json_decode($response->body());
+
+        dd( "json" . $json);
+        return redirect()->route('categorias.index');
+        
+  
     }
 
     public function show($id)
-    {
-        $categoria=DB::table('categories')->where('id',$id)->first();
-        return view('/admin/categories/show')->with ('categoria',$categoria);
+    {//Vista
+        $response = Http::withToken(Session::get('token'))
+        ->get($this->url_categorias.$id);
+        $json=json_decode($response->body());
+        // dd($json);
+
+        return view('/admin/categories/show')->with('categories', $json->categories);
     }
 
     public function edit($id)
-    {
-        $categoria=DB::table('categories')->where('id',$id)->first();
-        return view('/admin/categories/edit')->with ('categoria',$categoria);
+    {//Vista
+        $response = Http::withToken(Session::get('token'))
+        ->get($this->url_categorias.$id);
+        $json=json_decode($response->body());
+        //dd($json);
+
+        return view('/admin/categories/edit')->with('categories', $json->categories);
     }
 
     public function update(Request $request, $id)
     {
-        DB::table('categories')->where('id',$id)
-        ->update([
+        $response = Http::withToken(Session::get('token'))
+        ->attach(
+            'image', //nombre del campo enviado a la api
+            $request->file('image')->getContent(),  //contenido de la imagen
+            $request->file('image')->getClientOriginalName() //nombre del archivo
+        )->post($this->url_categorias.$id,[
             'name' => $request ->name,
             'description' =>$request ->description,
             'image' =>$request ->image,
-            'updated_at' => now(),
+            '_method' =>"PUT",
         ]);
-        if($request->hasFile('image')){
-            $ruta='imagenes/categories';
-            $extension=$request->image->extension();
-            $nombre='categoria_'.$id.'.'.$extension;
-            $path=$request->image->storeAs($ruta,$nombre,'public');
-            DB::table('categories')->where('id',$id)
-            ->update([
-                'image' => '/storage/'.$path,
-                'updated_at' => now(),
-            ]);
-        }
-        $categorias = DB :: table ('categories')->where('status','ACTIVE')->get();
-        return view('/admin/categories/list')->with ('categorias',$categorias)->with ('mensaje','registro realizado');
-        // if($request->hasFile('image')){
-        //     $ruta='imagenes/categories';
-        //     $num=0;
-        //     foreach($request -> photos as $img){
-        //         $extension=$img->extension();$num++;
-        //         $nombre='categoria_'.$id.'_'.$num.'.'.$extension;
-        //         $path=$request->image->storeAs($ruta,$nombre,'public');
-        //         DB::table('categories')->where('id',$id)
-        //         ->update([
-        //             'image' =>$path,
-        //             'updated_at' => now(),
-        //         ]);
-        //     }
-        // }
+
+        $json=json_decode($response->body());
+
+        //dd($json);
+        return redirect()->route('categorias.index');
     }
 
-    public function destroy($id)
-    {
-        DB::table('categories')->where('id',$id)
-        ->update([
-            
-            'status' =>"INACTIVE",
+    public function destroy(Request $request, $id)
+    {//Proceso
+        //dd($request);
+        $response = Http::withToken(Session::get('token'))
+        ->post($this->url_categorias.$id,[
+            '_method' => 'DELETE',
         ]);
-        $categorias = DB :: table ('categories')->where('status','ACTIVE')->get();
-        return view('/admin/categories/list')->with ('categorias',$categorias);
+        $json=json_decode($response->body());
+        
+        //dd($json);
+
+
+     
+        return redirect()->route('categorias.index');
+    //     view('/admin/productos/list')
+    //         ->with('mensaje', $json->message);
     }
 }

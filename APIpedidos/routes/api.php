@@ -29,15 +29,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Controlador de Categorias
+//Controlador de productos
 Route::get('/categories',[categoriesController::class,'index'])->name('categories.index');
-Route::post('/categories',[CategoriesController::class,'store'])->middleware('auth:sanctum')->name('categories.store');
-Route::get('/categories/{id}',[CategoriesController::class,'show'])->middleware('auth:sanctum')->name('categories.show');
-Route::put('/categories/{id}',[CategoriesController::class,'update'])->middleware('auth:sanctum')->name('categories.update');
-Route::delete('/categories/{id}',[CategoriesController::class,'destroy'])->middleware('auth:sanctum')->name('categories.destroy');
 
 
-//Autenticatcion
-Route::post('/inicia-sesion',[loginController::class,'login'])->name('inicia-sesion');
-Route::post('/validar-registro',[loginController::class,'registro'])->name('validar-registro');
-Route::get('/logout',[loginController::class,'logout'])->name('logout');
+
+Route::middleware('auth:sanctum')->group(function () 
+{
+    Route::post('/auth/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+    Route::get('/auth/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::post('/auth/login', [App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('/categories',[categoriesController::class,'store'])->name('categories.store');
+    Route::get('/categories/{id}',[categoriesController::class,'show'])->name('categories.show');
+    Route::put('/categories/{id}',[categoriesController::class,'update'])->name('categories.update');
+    Route::delete('/categories/{id}',[categoriesController::class,'destroy'])->name('categories.destroy');
+});
